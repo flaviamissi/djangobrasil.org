@@ -73,7 +73,7 @@ urlpatterns = patterns(
 
     # home page
     (r'^$', 'django.views.generic.simple.direct_to_template', {'template': 'flatfiles/homepage.html'}),
-    
+
     # home page beta
     (r'^beta/$', 'django.views.generic.simple.direct_to_template', {'template': 'flatfiles/beta.html'}),
 
@@ -85,7 +85,7 @@ urlpatterns = patterns(
 
     # contato
     (r'^contato/$', 'djangobrasil.views.contact'),
-    
+
     # casos de sucesso
     (r'^casos-de-sucesso/', include('djangobrasil.success_cases.urls')),
 )

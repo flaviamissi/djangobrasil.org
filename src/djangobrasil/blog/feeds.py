@@ -23,12 +23,13 @@ from django.contrib.syndication.feeds import Feed
 from django.utils.feedgenerator import Atom1Feed
 from djangobrasil.blog.models import Entry
 
+
 class RssLatestEntriesFeed(Feed):
+
     title = u"Django Brasil Weblog"
     link = u"/weblog/"
     description = u"Blog da comunidade brasileira do framework Django."
     author_name = u'Comunidade Django Brasil'
-
 
     def items(self):
         return Entry.published.order_by('-pub_date')[:15]
@@ -36,6 +37,8 @@ class RssLatestEntriesFeed(Feed):
     def item_pubdate(self, item):
         return item.pub_date
 
+
 class AtomLatestEntriesFeed(RssLatestEntriesFeed):
+
     feed_type = Atom1Feed
     subtitle = u"Blog da comunidade brasileira do framework Django"

@@ -22,6 +22,7 @@ from django.contrib import admin
 
 from models import Entry, ENTRY_DEFAULT_FIELDSET, ENTRY_OTHER_FIELDSET
 
+
 class EntryAdmin(ModelAdmin):
     list_display = ('title', 'pub_date', 'is_draft')
     list_filter = ('is_draft', 'markup')
@@ -36,4 +37,3 @@ class EntryAdmin(ModelAdmin):
     }
 
 admin.site.register(Entry, EntryAdmin)
-

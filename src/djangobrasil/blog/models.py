@@ -39,7 +39,7 @@ ENTRY_OTHER_FIELDSET = {
 
 def markuping(markup, value):
     """
-    Transform plain text markup syntaxes to HTML with filters in 
+    Transform plain text markup syntaxes to HTML with filters in
     django.contrib.markup.templatetags.
     """
     from django.contrib.markup.templatetags.markup \
@@ -59,6 +59,7 @@ class PublishedEntriesManager(models.Manager):
         queryset = super(PublishedEntriesManager, self).get_query_set()
         return queryset.filter(is_draft=False, pub_date__lte=datetime.now())
 
+
 class Entry(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(
@@ -67,15 +68,15 @@ class Entry(models.Model):
     )
     body_source = models.TextField('Body')
     body = models.TextField(
-        'Body as HTML', 
-        blank=True, 
+        'Body as HTML',
+        blank=True,
         null=True,
         editable=False,
     )
     markup = models.CharField(
         'Markup language',
         default='markdown',
-        max_length=8, 
+        max_length=8,
         choices=MARKUP_CHOICES,
     )
     is_draft = models.BooleanField(
@@ -108,6 +109,7 @@ class Entry(models.Model):
 # signals
 
 from django.db.models import signals
+
 
 def entry_pre_save(sender, instance, signal, *args, **kwargs):
     # update pub_date instance if entry was draft
